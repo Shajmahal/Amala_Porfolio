@@ -1,168 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Resume | Amala Shaji</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resume | Amala Shaji</title>
 
-<style>
-
-/* ================================
-   COLOR SYSTEM (same as homepage)
-================================ */
-:root{
-  --bg:#0f0f15;
-  --card:#181822;
-  --text:#f2f3f7;
-  --muted:#a4a6b3;
-  --accent:#b79cff;
-  --accent-soft:#e6dcff;
-  --border:rgba(255,255,255,0.08);
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.65;
-}
-
-/* Background glow (same as home page) */
-.bg{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(183,156,255,0.08), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(183,156,255,0.05), transparent 40%);
-  z-index:-1;
-}
-
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:60px 24px;
-}
-
-/* ================================
-   NAVBAR (same as homepage)
-================================ */
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:60px;
-}
-
-.logo{
-  font-weight:700;
-  text-decoration:none;
-  color:white;
-}
-
-.nav a{
-  color:var(--muted);
-  text-decoration:none;
-  margin-left:28px;
-  font-size:14px;
-}
-
-.nav a:hover{
-  color:var(--accent-soft);
-}
-
-/* ================================
-   HEADER
-================================ */
-.kicker{
-  font-size:12px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:12px;
-}
-
-h1{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-.sub{
-  color:var(--muted);
-  margin-bottom:30px;
-}
-
-/* ================================
-   PDF VIEWER
-================================ */
-.resume-container{
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,0.12);
-  background:rgba(24,24,34,0.75);
-  backdrop-filter:blur(10px);
-  box-shadow:0 25px 70px rgba(0,0,0,0.45);
-}
-
-.resume-container iframe{
-  width:100%;
-  height:950px;
-  border:none;
-}
-
-/* ================================
-   FOOTER
-================================ */
-footer{
-  margin-top:60px;
-  padding-top:30px;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  text-align:center;
-  font-size:13px;
-}
-
-</style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <div class="bg"></div>
 
-<div class="bg"></div>
+  <div class="container">
 
-<div class="container">
+    <nav class="nav">
+      <a class="logo" href="index.html">AS</a>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <a class="logo" href="index.html">AS</a>
-    <div>
-      <a href="projects.html">Projects</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="resume.html">Resume</a>
+      <button class="navToggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        ☰
+      </button>
+
+      <div class="navLinks" id="navLinks">
+        <a href="projects.html">Projects</a>
+        <a href="resume.html" class="activeLink">Resume</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="kicker">Professional Resume</div>
+    <h1>Amala Shaji</h1>
+    <p class="sub">View or download my full resume below.</p>
+
+    <div class="btnrow">
+      <a class="chip" href="resume.pdf" target="_blank" rel="noopener">Open PDF</a>
+      <a class="chip" href="resume.pdf" download>Download PDF</a>
     </div>
-  </nav>
 
-  <!-- HEADER -->
-  <div class="kicker">Professional Resume</div>
-  <h1>Amala Shaji</h1>
-  <p class="sub">
-    View or download my full resume below.
-  </p>
+    <div class="resumeFrame">
+      <iframe src="resume.pdf" title="Amala Shaji Resume PDF"></iframe>
+    </div>
 
-  <!-- PDF DISPLAY -->
-  <div class="resume-container">
-    <iframe src="resume.pdf"></iframe>
+    <footer>
+      © <span id="year"></span> Amala Shaji • Built with GitHub Pages
+    </footer>
+
   </div>
 
-  <footer>
-    © <span id="year"></span> Amala Shaji • Built with GitHub Pages
-  </footer>
-
-</div>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
