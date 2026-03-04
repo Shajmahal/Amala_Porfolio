@@ -1,346 +1,160 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Amala Shaji | Computer Engineering Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amala Shaji | Computer Engineering Portfolio</title>
 
-<style>
-/* ================================
-   COLOR SYSTEM
-================================ */
-:root{
-  --bg:#0f0f15;
-  --card:#181822;
-  --text:#f2f3f7;
-  --muted:#a4a6b3;
-  --accent:#b79cff;
-  --accent-soft:#e6dcff;
-  --border:rgba(255,255,255,0.08);
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.65;
-}
-
-.bg{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(183,156,255,0.08), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(183,156,255,0.05), transparent 40%);
-  z-index:-1;
-}
-
-.container{max-width:1000px;margin:auto;padding:60px 24px;}
-.section{margin-top:120px;}
-
-.kicker{
-  font-size:12px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:16px;
-}
-
-.headline{
-  font-size:54px;
-  font-weight:700;
-  margin-bottom:36px;
-  letter-spacing:-1px;
-}
-
-.grad{
-  background:linear-gradient(90deg,#b79cff,#f0e9ff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-/* NAV */
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:50px;
-}
-.logo{font-weight:700;text-decoration:none;color:white;}
-.nav a{
-  color:var(--muted);
-  text-decoration:none;
-  margin-left:28px;
-  font-size:14px;
-}
-.nav a:hover{color:var(--accent-soft);}
-
-/* NOTEPAD WINDOW */
-.notepad{
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,0.12);
-  background:rgba(24,24,34,0.75);
-  backdrop-filter:blur(10px);
-  box-shadow:0 25px 70px rgba(0,0,0,0.45);
-}
-
-.notepad__topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 16px;
-  background:rgba(255,255,255,0.05);
-  border-bottom:1px solid rgba(255,255,255,0.1);
-}
-
-.dots{display:flex;gap:8px;}
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-}
-.red{background:#ff5f56;}
-.yellow{background:#ffbd2e;}
-.green{background:#27c93f;}
-
-.notepad__title{
-  font-size:12px;
-  color:rgba(242,243,247,0.7);
-}
-
-.notepad__body{
-  padding:22px 24px;
-}
-
-.notepad__body pre{
-  margin:0;
-  white-space:pre-wrap;
-  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Courier New",monospace;
-  font-size:13.5px;
-  line-height:1.85;
-  color:rgba(242,243,247,0.92);
-}
-
-.prompt{
-  color:var(--accent-soft);
-  font-weight:700;
-}
-
-.divider{
-  height:1px;
-  background:rgba(255,255,255,0.08);
-  margin:18px 0;
-}
-
-/* QUICK LINKS */
-.panel{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  margin-top:28px;
-}
-
-.chips{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:12px;
-}
-
-.chip{
-  padding:6px 12px;
-  font-size:13px;
-  border-radius:8px;
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.1);
-  color:var(--text);
-  text-decoration:none;
-  transition:.2s ease;
-}
-
-.chip:hover{
-  background:rgba(183,156,255,0.12);
-  border-color:rgba(183,156,255,0.4);
-  transform:translateY(-2px);
-}
-
-.quicknote{
-  font-size:13px;
-  color:var(--muted);
-  margin-top:14px;
-}
-
-/* WORK */
-.workgrid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
-  margin-top:40px;
-}
-
-.workcard{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  transition:.25s ease;
-}
-.workcard:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 50px rgba(0,0,0,0.4);
-}
-.workcard h3{margin-bottom:10px;}
-.muted{color:var(--muted);font-size:14px;}
-
-/* CONTACT */
-.contactgrid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:24px;
-  margin-top:40px;
-}
-
-.contactcard{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-}
-
-.contactcard h3{
-  color:var(--accent);
-  margin-bottom:8px;
-}
-
-.contactlink{
-  color:var(--accent-soft);
-  font-weight:600;
-  text-decoration:none;
-}
-
-.contactlink:hover{color:white;}
-
-footer{
-  margin-top:90px;
-  padding-top:30px;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  text-align:center;
-  font-size:13px;
-}
-
-</style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-<div class="bg"></div>
+  <div class="bg"></div>
 
-<div class="container">
+  <div class="container">
 
-<nav class="nav">
-  <a class="logo" href="#">AS</a>
-  <div>
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
-    <a href="resume.html">Resume</a>
-  </div>
-</nav>
+    <!-- NAV -->
+    <nav class="nav">
+      <a class="logo" href="index.html">AS</a>
 
-<div class="kicker">Computer Engineering • Hardware • Embedded • Software</div>
-<h1 class="headline"><span class="grad">Amala Shaji</span></h1>
+      <!-- Mobile toggle -->
+      <button class="navToggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        ☰
+      </button>
 
-<div class="notepad">
-  <div class="notepad__topbar">
-    <div class="dots">
-      <span class="dot red"></span>
-      <span class="dot yellow"></span>
-      <span class="dot green"></span>
+      <div class="navLinks" id="navLinks">
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="kicker">Computer Engineering • Hardware • Embedded • Software</div>
+
+    <h1 class="headline">
+      <span class="grad">Amala Shaji</span>
+    </h1>
+
+    <!-- STATUS + TERMINAL -->
+    <div class="terminal" aria-label="Intro terminal">
+      <div class="terminal__topbar">
+        <div class="dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+
+        <div class="terminal__right">
+          <span class="status">
+            <span class="statusDot" id="statusDot"></span>
+            <span class="statusText" id="statusText">Open</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="terminal__body buildlog">
+        <div class="tline"><span class="prompt">$</span> <span id="typeLine1"></span></div>
+        <div class="tline"><span class="prompt">$</span> <span id="typeLine2"></span></div>
+        <div class="tline"><span class="prompt">$</span> <span id="typeLine3"></span></div>
+
+        <div class="dividerline"></div>
+
+        <pre class="ttext">
+Who Am I?
+I’m a Computer Engineering student who enjoys building things and understanding how they work at a deeper level.
+I’m most interested in projects where I can take an idea from concept to something real — whether that’s a circuit board,
+embedded firmware, or a small application. I care about the details and don’t like leaving problems half solved.
+
+What I build
+Practical systems — hardware, embedded code, and software — that are reliable, clearly structured, and tested properly.
+
+My standard
+I plan before building, test while developing, and document what I learn along the way.</pre>
+      </div>
     </div>
-    <div class="notepad__title">Notes — Portfolio Build Log</div>
+
+    <!-- QUICK LINKS -->
+    <div class="panel quicklinks">
+      <h3>Quick Links</h3>
+
+      <div class="chips">
+        <a class="chip" href="projects.html">Projects</a>
+        <a class="chip" href="resume.html">Resume</a>
+        <a class="chip" href="https://github.com/shajmahal" target="_blank" rel="noopener">GitHub</a>
+        <a class="chip" href="https://www.linkedin.com/in/amala-shaji" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="chip" href="mailto:Amala.thomas2002@gmail.com">Email</a>
+      </div>
+
+      <div class="quicknote">
+        Recruiter-friendly layout: featured work, clear skills, and direct contact info.
+      </div>
+    </div>
+
+    <!-- FEATURED WORK -->
+    <section class="section" id="work">
+      <div class="section__top">
+        <h2>Featured Work</h2>
+        <div class="filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="hardware">Hardware</button>
+          <button class="filter" data-filter="embedded">Embedded</button>
+          <button class="filter" data-filter="software">Software</button>
+          <button class="filter" data-filter="systems">Systems</button>
+        </div>
+      </div>
+
+      <div class="workgrid">
+        <a class="pcard" data-tags="hardware systems" href="projects.html">
+          <h3>PCB Design & Validation</h3>
+          <p class="muted">Designed and tested a board from schematic to bring-up, documenting debugging and validating performance.</p>
+          <span class="alink">View details →</span>
+        </a>
+
+        <a class="pcard" data-tags="embedded systems" href="projects.html">
+          <h3>Embedded Firmware System</h3>
+          <p class="muted">Built reliable firmware with structured testing and defensive coding practices.</p>
+          <span class="alink">View details →</span>
+        </a>
+
+        <a class="pcard" data-tags="software" href="projects.html">
+          <h3>Software Application Prototype</h3>
+          <p class="muted">Developed a clean, modular interface with clear documentation and architecture decisions.</p>
+          <span class="alink">View details →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2>Contact Me</h2>
+      <p class="muted">
+        If my work resonates with you or you’re looking for someone who builds with intention and discipline, I’d love to connect.
+      </p>
+
+      <div class="contactgrid">
+        <div class="contactcard">
+          <h3>Email</h3>
+          <a class="contactlink" href="mailto:Amala.thomas2002@gmail.com">Amala.thomas2002@gmail.com</a>
+        </div>
+
+        <div class="contactcard">
+          <h3>GitHub</h3>
+          <a class="contactlink" href="https://github.com/shajmahal" target="_blank" rel="noopener">github.com/shajmahal</a>
+        </div>
+
+        <div class="contactcard">
+          <h3>LinkedIn</h3>
+          <a class="contactlink" href="https://www.linkedin.com/in/amala-shaji" target="_blank" rel="noopener">linkedin.com/in/amala-shaji</a>
+        </div>
+      </div>
+
+      <footer>
+        © <span id="year"></span> Amala Shaji • Built with GitHub Pages
+      </footer>
+    </section>
+
   </div>
 
-  <div class="notepad__body">
-<pre>
-<span class="prompt">$</span> Who Am I?
-I’m a Computer Engineering student who enjoys building things and understanding how they work at a deeper level. I’m most interested in projects where I can take an idea from concept to something real, whether that’s a circuit board, embedded firmware, or a small application. I care about the details and don’t like leaving problems half solved. I’m still growing as an engineer, but I approach every project with curiosity, discipline, and consistency.
-
-<span class="divider"></span>
-
-<span class="prompt">$</span> what I build
-I build practical systems — hardware, embedded code, and software applications — that are reliable, clearly structured, and tested properly. I focus on turning ideas into working results instead of just prototypes that look good on the surface.
-
-<span class="divider"></span>
-
-<span class="prompt">$</span> my standard
-I plan before building, test while developing, and document what I learn along the way. I try to understand the fundamentals first so when something breaks, I can fix it confidently instead of guessing. I care more about doing something correctly than rushing to call it finished.
-</pre>
-  </div>
-</div>
-
-<div class="panel">
-  <h3>Quick Links</h3>
-  <div class="chips">
-    <a class="chip" href="https://github.com/shajmahal" target="_blank">GitHub</a>
-    <a class="chip" href="https://www.linkedin.com/in/amala-shaji" target="_blank">LinkedIn</a>
-    <a class="chip" href="resume.html">Resume</a>
-    <a class="chip" href="mailto:Amala.thomas2002@gmail.com">Email</a>
-  </div>
-  <div class="quicknote">
-    Recruiter-friendly layout: featured work, clear skills, and direct contact info.
-  </div>
-</div>
-
-<section class="section" id="work">
-  <h2>Featured Work</h2>
-  <div class="workgrid">
-    <div class="workcard">
-      <h3>PCB Design & Validation</h3>
-      <p class="muted">Designed and tested a board from schematic to bring-up, documenting debugging and validating performance.</p>
-    </div>
-    <div class="workcard">
-      <h3>Embedded Firmware System</h3>
-      <p class="muted">Built reliable firmware with structured testing and defensive coding practices.</p>
-    </div>
-    <div class="workcard">
-      <h3>Software Application Prototype</h3>
-      <p class="muted">Developed a clean, modular interface with clear documentation and architecture decisions.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="contact">
-  <h2>Contact Me</h2>
-  <p class="muted">If my work resonates with you or you’re looking for someone who builds with intention and discipline, I’d genuinely love to connect.</p>
-
-  <div class="contactgrid">
-    <div class="contactcard">
-      <h3>Email</h3>
-      <a class="contactlink" href="mailto:Amala.thomas2002@gmail.com">Amala.thomas2002@gmail.com</a>
-    </div>
-    <div class="contactcard">
-      <h3>GitHub</h3>
-      <a class="contactlink" href="https://github.com/shajmahal" target="_blank">github.com/shajmahal</a>
-    </div>
-    <div class="contactcard">
-      <h3>LinkedIn</h3>
-      <a class="contactlink" href="https://www.linkedin.com/in/amala-shaji" target="_blank">linkedin.com/in/amala-shaji</a>
-    </div>
-  </div>
-
-  <footer>
-    © <span id="year"></span> Amala Shaji • Built with GitHub Pages
-  </footer>
-</section>
-
-</div>
-
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
