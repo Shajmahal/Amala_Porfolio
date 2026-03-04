@@ -2,13 +2,19 @@
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
 
-navToggle?.addEventListener("click", () => navLinks.classList.toggle("open"));
+navToggle?.addEventListener("click", () => {
+  navLinks?.classList.toggle("open");
+  const expanded = navLinks?.classList.contains("open") ? "true" : "false";
+  navToggle.setAttribute("aria-expanded", expanded);
+});
+
 navLinks?.querySelectorAll("a").forEach(a => {
-  a.addEventListener("click", () => navLinks.classList.remove("open"));
+  a.addEventListener("click", () => navLinks?.classList.remove("open"));
 });
 
 // ===== Footer year =====
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // ===== Status indicator =====
 const statusText = document.getElementById("statusText");
@@ -25,20 +31,20 @@ const setStatus = (label, color, ring) => {
 };
 
 if (status === "Open") {
-  setStatus("Open to internships • Summer 2025", "#22c55e", "rgba(34,197,94,.12)");
+  setStatus("Open to internships • 2026", "#22c55e", "rgba(34,197,94,.12)");
 } else if (status === "Busy") {
   setStatus("Currently busy • Limited availability", "#f59e0b", "rgba(245,158,11,.14)");
 } else {
   setStatus("Not currently available", "#ef4444", "rgba(239,68,68,.14)");
 }
 
-// ===== Terminal typing (C) =====
+// ===== Terminal typing =====
 const typeLine1 = document.getElementById("typeLine1");
 const typeLine2 = document.getElementById("typeLine2");
 const typeLine3 = document.getElementById("typeLine3");
 
 const lines = [
-  { el: typeLine1, text: "Angela Shaji — Computer Engineering portfolio" },
+  { el: typeLine1, text: "Amala Shaji — Computer Engineering portfolio" },
   { el: typeLine2, text: "Hardware • Embedded Systems • Software that ships" },
   { el: typeLine3, text: "Building projects + documenting results (GitHub: shajmahal)" }
 ];
@@ -54,17 +60,18 @@ async function typeInto(el, text, speed = 18) {
   }
   el.innerHTML += '<span class="cursor">▌</span>';
   await sleep(450);
-  el.innerHTML = el.textContent; // remove cursor from finished line
+  el.innerHTML = el.textContent;
 }
 
 (async function runTyping() {
+  if (!typeLine1 && !typeLine2 && !typeLine3) return;
   for (const l of lines) {
     await typeInto(l.el, l.text, 14);
     await sleep(180);
   }
 })();
 
-// ===== Project filter (B) =====
+// ===== Project filter =====
 const filterBtns = document.querySelectorAll(".filter");
 const projectCards = document.querySelectorAll(".pcard");
 
@@ -74,19 +81,17 @@ filterBtns.forEach(btn => {
     btn.classList.add("active");
 
     const filter = btn.dataset.filter; // all | hardware | embedded | software | systems
-
     projectCards.forEach(card => {
-      const tags = (card.dataset.tags || "").split(" ");
+      const tags = (card.dataset.tags || "").split(" ").filter(Boolean);
       const show = (filter === "all") || tags.includes(filter);
-
       card.style.display = show ? "" : "none";
     });
   });
 });
 
-// ===== Reveal-on-scroll (smooth polish) =====
+// ===== Reveal-on-scroll =====
 const revealTargets = document.querySelectorAll(
-  ".section, .pcard, .skill-group, .impact__card, .coursework__card, .timeline__content, .contact__card, .sidecard, .terminal"
+  ".section, .pcard, .skill-group, .impact__card, .coursework__card, .timeline__content, .contact__card, .sidecard, .terminal, .panel, .card"
 );
 
 revealTargets.forEach(el => el.classList.add("reveal"));
