@@ -1,14 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects | Amala Shaji</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -34,18 +30,18 @@
 <div class="grid">
 
 <div class="card" onclick="openModal('pcb')">
-<h3>PCB Design & Validation</h3>
-<p>Designed and tested a board from schematic to full validation.</p>
+<h3>PCB Design</h3>
+<p>Designed and validated PCB hardware.</p>
 </div>
 
 <div class="card" onclick="openModal('firmware')">
 <h3>Embedded Firmware</h3>
-<p>Reliable firmware system for sensor communication.</p>
+<p>Sensor communication and data system.</p>
 </div>
 
 <div class="card" onclick="openModal('software')">
-<h3>Software Application</h3>
-<p>Modular software architecture prototype.</p>
+<h3>Software Prototype</h3>
+<p>Modular application prototype.</p>
 </div>
 
 </div>
@@ -56,7 +52,7 @@
 
 </div>
 
-<div class="overlay" id="overlay">
+<div id="overlay" class="overlay">
 
 <div class="modal">
 
@@ -68,11 +64,11 @@
 <span class="dot green"></span>
 </div>
 
-<div class="close" onclick="closeModal()">Close</div>
+<button onclick="closeModal()">Close</button>
 
 </div>
 
-<div id="modalContent" class="modalBody"></div>
+<div id="modalContent"></div>
 
 </div>
 
